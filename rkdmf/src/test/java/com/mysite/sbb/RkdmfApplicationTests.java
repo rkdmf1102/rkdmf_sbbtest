@@ -3,9 +3,9 @@ package com.mysite.sbb;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
+
+import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
 
 //import java.util.Optional;
 
@@ -66,10 +66,17 @@ class RkdmfApplicationTests {
 //		Inventory i = iList.get(0);
 //		assertEquals("김가을", i.getININame());
 		
-		Optional<Inventory> oi = this.inventoryRepository.findById("240206-011");
-		assertTrue(oi.isPresent());
-		Inventory i = oi.get();
-		i.setINAQ(700);
-		this.inventoryRepository.save(i);
+//		Optional<Inventory> oi = this.inventoryRepository.findById("240206-011");
+//		assertTrue(oi.isPresent());
+//		Inventory i = oi.get();
+//		i.setINAQ(700);
+//		this.inventoryRepository.save(i);
+		
+		assertEquals(2, this.inventoryRepository.count());
+        Optional<Inventory> oi = this.inventoryRepository.findById("240206-011");
+        assertTrue(oi.isPresent());
+        Inventory i = oi.get();
+        this.inventoryRepository.delete(i);
+        assertEquals(1, this.inventoryRepository.count());
 	}
 }
