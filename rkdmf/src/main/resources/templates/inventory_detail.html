@@ -1,4 +1,32 @@
 <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
-<div class="container">
+<div class="container my-3">
 	<h5 class="my-3 border-bottom pd-2">수정</h5>
+	<div class="mb-3">
+		<label for="INDate" class="form-label">일자</label>
+		<div th:text="${inventory.INDate}">	
+	</div>
+	<div class="mb-3">
+		<label for="ININame" class="form-label">품목명</label>
+	<div th:text="${inventory.ININame}">
+	</div>
+	<div class="mb-3">
+		<label for="INICode" class="form-label">품목코드</label>
+	<div th:text="${inventory.INICode}">
+	</div>
+	<div class="mb-3">
+		<label for="INPName" class="form-label">담당자</label>
+	<div th:text="${inventory.INPName}">
+	</div>
+	<div class="mb-3">
+		<label for="INPNum" class="form-label">담당자사번</label>
+	<div th:text="${inventory.INPNum}">
+	</div>
+	<div class="mb-3">
+		<label for="INQuantity" class="form-label">수량</label>
+	<div th:text="${inventory.INQuantity}">
+	</div>
+	<div class="mb-3">
+		<label for="INStandard" class="form-label">규격</label>
+	<div th:text="${inventory.INStandard}">
+	</div>
 </div>

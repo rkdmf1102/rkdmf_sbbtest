@@ -6,12 +6,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.data.domain.Page;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+@RequestMapping("/inventory")
 @RequiredArgsConstructor
 @Controller
 public class InventoryController {
@@ -26,7 +28,7 @@ public class InventoryController {
 	
 	private final InventoryService inventoryService;
 	
-	@GetMapping("/inventory/list")
+	@GetMapping("/list")
 	public String list(Model model, @RequestParam(value="page", defaultValue = "0") int page) {
 		Page<Inventory> paging = this.inventoryService.getList(page);
 		model.addAttribute("paging", paging);
@@ -45,13 +47,13 @@ public class InventoryController {
 //	}
 	
 	
-	@GetMapping("/inventory/create")
+	@GetMapping("/create")
 	public String inventoryCreate(InventoryForm inventoryForm){
 		return "inventory_form";
 	}
 	
 	
-	@PostMapping("/inventory/create")
+	@PostMapping("/create")
 	public String inventoryCreate(@Valid InventoryForm inf, BindingResult br) {
 		if (br.hasErrors()) {
 			return "inventory_form"; 
@@ -60,8 +62,10 @@ public class InventoryController {
 		return "redirect:/inventory/list";
 	}
 	
-	@GetMapping(value = "/inventory/detail/{id}")
+	@GetMapping(value = "/detail/{id}")
 	public String detail(Model model, @PathVariable("id") Integer id) {
+		Inventory inventory = this.inventoryService.getInventory(id);
+		model.addAttribute("inventory", inventory);
 		return "inventory_detail";
 	}
 }
