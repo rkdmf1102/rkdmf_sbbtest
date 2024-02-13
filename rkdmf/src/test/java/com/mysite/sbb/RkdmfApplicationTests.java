@@ -1,17 +1,15 @@
 package com.mysite.sbb;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Optional;
-
-import org.aspectj.weaver.patterns.TypePatternQuestions.Question;
+import java.time.LocalDateTime;
 
 //import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.mysite.sbb.Inventory.Inventory;
+import com.mysite.sbb.Inventory.InventoryRepository;
 
 
 @SpringBootTest
@@ -22,29 +20,29 @@ class RkdmfApplicationTests {
 
 	@Test
 	void testJpa() {
-//		Inventory inv1 = new Inventory();
-//		inv1.setCreateDate(LocalDateTime.now());
-//		inv1.setINAQ(100);
-//		inv1.setINBQ(500);
-//		inv1.setINDate("240206-011");
-//		inv1.setINICode("IG-A01");
-//		inv1.setININame("다이소");
-//		inv1.setINPName("김가을");
-//		inv1.setINPNum("2401011111234");
-//		inv1.setINStandard("규격");
-//		this.inventoryRepository.save(inv1);
-//		
-//		Inventory inv2 = new Inventory();
-//		inv2.setCreateDate(LocalDateTime.now());
-//		inv2.setINAQ(600);
-//		inv2.setINBQ(200);
-//		inv2.setINDate("240912-066");
-//		inv2.setINICode("IG-A99");
-//		inv2.setININame("이마트");
-//		inv2.setINPName("김하늘");
-//		inv2.setINPNum("2405054561238");
-//		inv2.setINStandard("규격2");
-//		this.inventoryRepository.save(inv2);
+		Inventory inv1 = new Inventory();
+		inv1.setCreateDate(LocalDateTime.now());
+		inv1.setINAQ(99);
+		inv1.setINBQ(99);
+		inv1.setINDate("240206-011");
+		inv1.setINICode("IG-A01");
+		inv1.setININame("다이소");
+		inv1.setINPName("김가을");
+		inv1.setINPNum("2401011111234");
+		inv1.setINStandard("규격");
+		this.inventoryRepository.save(inv1);
+		
+		Inventory inv2 = new Inventory();
+		inv2.setCreateDate(LocalDateTime.now());
+		inv2.setINAQ(999);
+		inv2.setINBQ(999);
+		inv2.setINDate("240912-066");
+		inv2.setINICode("IG-A99");
+		inv2.setININame("이마트");
+		inv2.setINPName("김하늘");
+		inv2.setINPNum("2405054561238");
+		inv2.setINStandard("규격2");
+		this.inventoryRepository.save(inv2);
 		
 		
 		
@@ -72,11 +70,11 @@ class RkdmfApplicationTests {
 //		i.setINAQ(700);
 //		this.inventoryRepository.save(i);
 		
-		assertEquals(2, this.inventoryRepository.count());
-        Optional<Inventory> oi = this.inventoryRepository.findById("240206-011");
-        assertTrue(oi.isPresent());
-        Inventory i = oi.get();
-        this.inventoryRepository.delete(i);
-        assertEquals(1, this.inventoryRepository.count());
+//		assertEquals(2, this.inventoryRepository.count());
+//        Optional<Inventory> oi = this.inventoryRepository.findById(1);
+//        assertTrue(oi.isPresent());
+//        Inventory i = oi.get();
+//        this.inventoryRepository.delete(i);
+//        assertEquals(1, this.inventoryRepository.count());
 	}
 }

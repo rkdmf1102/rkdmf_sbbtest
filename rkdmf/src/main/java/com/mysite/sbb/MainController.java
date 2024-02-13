@@ -13,4 +13,9 @@ public class MainController {
 		return "안녕!!!";
 	}
 	
+	@GetMapping("/")
+	public String rroot() {
+		return "redirect:/inventory/list";
+	}
+	
 }

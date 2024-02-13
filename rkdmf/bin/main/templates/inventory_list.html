@@ -1,0 +1,53 @@
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+<div class="container my-3">
+	<table class="table">
+		<thead class="table-dark">
+			<tr>
+				<th>No.</th>
+				<th>재고번호</th>
+				<th>품목명</th>
+				<th>품목코드</th>
+				<th>담당자</th>
+				<th>담당자사번</th>
+				<th>실사수량</th>
+				<th>장부수량</th>
+				<th>규격</th>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr th:each="inventory, loop : ${inventoryList}">
+				<td th:text="${loop.count}"></td>
+				<th>
+					<th:text="@{|/inventory/${inventory.id}|}" th:text="${inventory.INDate}"></a>
+				</th>
+				<th>
+					<th:text="@{|/inventory/${inventory.id}|}" th:text="${inventory.ININame}"></a>
+				</th>
+				<th>
+					<th:text="@{|/inventory/${inventory.id}|}" th:text="${inventory.INICode}"></a>
+				</th>
+				<th>
+					<th:text="@{|/inventory/${inventory.id}|}" th:text="${inventory.INPName}"></a>
+				</th>
+				<th>
+					<th:text="@{|/inventory/${inventory.id}|}" th:text="${inventory.INPNum}"></a>
+				</th>
+				<th>
+					<th:text="@{|/inventory/${inventory.id}|}" th:text="${inventory.INAQ}"></a>
+				</th>
+				<th>
+					<th:text="@{|/inventory/${inventory.id}|}" th:text="${inventory.INBQ}"></a>
+				</th>
+				<th>
+					<th:text="@{|/inventory/${inventory.id}|}" th:text="${inventory.INStandard}"></a>
+				</th>
+			</tr>
+		</tbody>
+	</table>
+	<a th:href="@{/inventory/create}" class="btn btn-primary"> 재고조정</a>
+</dvi>
+
+
+
+
+	
