@@ -40,5 +40,5 @@ public class Inventory {
 	
 	private LocalDateTime createDate; 
 	
-	
+	private LocalDateTime modifyDate;
 }

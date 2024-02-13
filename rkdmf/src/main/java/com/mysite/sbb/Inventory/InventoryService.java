@@ -55,4 +55,20 @@ public class InventoryService {
 			throw new DataNotFoundException("inventory not found");
 		}
 	}
+	
+	public void modify(Inventory inventory, String INDate, String ININame, String INPName, Integer INQuantity, String INPNum, String INICode, String INStandard) {
+		inventory.setINDate(INDate);
+		inventory.setINICode(INICode);
+		inventory.setININame(ININame);
+		inventory.setINPName(INPName);
+		inventory.setINPNum(INPNum);
+		inventory.setINQuantity(INQuantity);
+		inventory.setINStandard(INStandard);
+		inventory.setModifyDate(LocalDateTime.now());
+		this.inventoryRepository.save(inventory);
+	}
+	
+	public void delete(Inventory inventory) {
+        this.inventoryRepository.delete(inventory);
+    }
 } 

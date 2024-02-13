@@ -1,7 +1,7 @@
-<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
-<div class="container">
+<html layout:decorate="~{layout}">
+<div layout:fragment="INDate" class="container">
 	<h5 class="my-3 border-bottom pd-2">재고조정</h5>
-	<form th:action="@{/inventory/create}" th:object="${inventoryForm}" method="post">
+	<form th:object="${inventoryForm}" method="post">
 		<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
 			<div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
 		</div>

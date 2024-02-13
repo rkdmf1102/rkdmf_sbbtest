@@ -68,5 +68,39 @@ public class InventoryController {
 		model.addAttribute("inventory", inventory);
 		return "inventory_detail";
 	}
+    
+	@GetMapping("/modify/{id}")
+	public String inventoryModify(InventoryForm inf, @PathVariable("id") Integer id) {
+		Inventory inventory = this.inventoryService.getInventory(id);
+		inf.setINDate(inventory.getINDate());
+		inf.setINICode(inventory.getINICode());
+		inf.setININame(inventory.getININame());
+		inf.setINPName(inventory.getINPName());
+		inf.setINPNum(inventory.getINPNum());
+		inf.setINQuantity(inventory.getINQuantity());
+		inf.setINStandard(inventory.getINStandard());
+		return "inventory_form";
+	}
+	
+	@PostMapping("/modify/{id}")
+    public String questionModify(@Valid InventoryForm inf, BindingResult br, @PathVariable("id") Integer id) {
+        if (br.hasErrors()) {
+            return "question_form";
+        }
+        Inventory inventory = this.inventoryService.getInventory(id); {
+       
+        this.inventoryService.modify(inventory, inf.getINDate(),inf.getININame(),inf.getINPName(),inf.getINQuantity(),inf.getINPNum(),inf.getINICode(),inf.getINStandard());
+        return String.format("redirect:/inventory/detail/%s", id);
+    
+        }
+	}
+	
+	@GetMapping("/delete/{id}")
+    public String questionDelete(@PathVariable("id") Integer id) {
+		Inventory inventory = this.inventoryService.getInventory(id);
+      
+        this.inventoryService.delete(inventory);
+        return "redirect:/";
+    }
 }
                   
