@@ -6,32 +6,28 @@
 			<div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
 		</div>
 		<div class="mb-3">
-			<label for="INDate" class="form-label">재고번호</label>
-			<input type="text" name="INDate" id="INDate" class="form-control">
+			<label for="INDate" class="form-label">일자</label>
+			<input type="text" th:field="*{INDate}" name="INDate" id="INDate" class="form-control">
 		</div>
 		<div class="mb-3">
 			<label for="ININame" class="form-label">품목명</label>
-			<input type="text" name="ININame" id="ININame" class="form-control">
+			<input type="text" th:field="*{ININame}" name="ININame" id="ININame" class="form-control">
 		</div>
 		<div class="mb-3">
 			<label for="INICode" class="form-label">품목코드</label>
-			<input type="text" name="INICode" id="INICode" class="form-control">
+			<input type="text" th:field="*{INICode}" name="INICode" id="INICode" class="form-control">
 		</div>
 		<div class="mb-3">
 			<label for="INPName" class="form-label">담당자</label>
-			<input type="text" name="INPName" id="INPName" class="form-control">
+			<input type="text" th:field="*{INPName}" name="INPName" id="INPName" class="form-control">
 		</div>
 		<div class="mb-3">
 			<label for="INPNum" class="form-label">담당자사번</label>
-			<input type="text" name="INPNum" id="INPNum" class="form-control">
+			<input type="text" th:field="*{INPNum}" name="INPNum" id="INPNum" class="form-control">
 		</div>
 		<div class="mb-3">
-			<label for="INAQ" class="form-label">실사수량</label>
-			<input type="text" name="INAQ" id="INAQ" class="form-control">
-		</div>
-		<div class="mb-3">
-			<label for="INBQ" class="form-label">장부수량</label>
-			<input type="text" name="INBQ" id="INBQ" class="form-control">
+			<label for="INQuantity" class="form-label">수량</label>
+			<input type="text" th:field="*{INQuantity}" name="INQuantity" id="INQuantity" class="form-control">
 		</div>
 		<div class="mb-3">
 			<label for="INStandard" class="form-label">규격</label>

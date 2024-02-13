@@ -22,8 +22,7 @@ class RkdmfApplicationTests {
 	void testJpa() {
 		Inventory inv1 = new Inventory();
 		inv1.setCreateDate(LocalDateTime.now());
-		inv1.setINAQ(99);
-		inv1.setINBQ(99);
+		inv1.setINQuantity(99);
 		inv1.setINDate("240206-011");
 		inv1.setINICode("IG-A01");
 		inv1.setININame("다이소");
@@ -34,8 +33,7 @@ class RkdmfApplicationTests {
 		
 		Inventory inv2 = new Inventory();
 		inv2.setCreateDate(LocalDateTime.now());
-		inv2.setINAQ(999);
-		inv2.setINBQ(999);
+		inv2.setINQuantity(999);
 		inv2.setINDate("240912-066");
 		inv2.setINICode("IG-A99");
 		inv2.setININame("이마트");

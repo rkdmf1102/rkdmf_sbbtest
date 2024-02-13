@@ -33,10 +33,7 @@ public class Inventory {
 	private String INICode;
 	
 	@Column(length = 7)
-	private Integer INBQ;
-	
-	@Column(length = 7)
-	private Integer INAQ;
+	private Integer INQuantity;
 	
 	@Column(length = 50)
 	private String INStandard;

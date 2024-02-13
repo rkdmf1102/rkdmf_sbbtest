@@ -19,11 +19,8 @@ public class InventoryForm {
 	@NotEmpty(message="품목코드는 필수항목입니다.")
 	private String INICode;
 	
-	@NotNull(message="실사수량은 필수항목입니다.")
-	private Integer INAQ;
-	
-	@NotNull(message="장부수량은 필수항목입니다.")
-	private Integer INBQ;
+	@NotNull(message="수량은 필수항목입니다.")
+	private Integer INQuantity;
 	
 	@NotEmpty(message="담당자는 필수항목입니다.")
 	private String INPName;
