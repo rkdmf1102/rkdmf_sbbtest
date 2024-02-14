@@ -9,10 +9,15 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import com.mysite.sbb.DataNotFoundException;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -39,11 +44,12 @@ public class InventoryService {
 		this.inventoryRepository.save(i);
 	}
 	
-	public Page<Inventory> getList(int page) {
+	public Page<Inventory> getList(int page, String kw) {
 		List<Sort.Order> sorts = new ArrayList<>();
 		sorts.add(Sort.Order.desc("createDate"));
 		Pageable pageable = PageRequest.of(page,  10, Sort.by(sorts));
-		return this.inventoryRepository.findAll(pageable);
+		Specification<Inventory> spec = search(kw);
+		return this.inventoryRepository.findAll(spec, pageable);
 	}
 	
 	//디테일
@@ -70,5 +76,20 @@ public class InventoryService {
 	
 	public void delete(Inventory inventory) {
         this.inventoryRepository.delete(inventory);
+    }
+	
+	private Specification<Inventory> search(String kw) {
+        return new Specification<>() {
+            private static final long serialVersionUID = 1L;
+            @Override
+            public Predicate toPredicate(Root<Inventory> i, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                query.distinct(true);  // 중복을 제거 
+                return cb.or(cb.like(i.get("INDate"), "%" + kw + "%"), 
+                        cb.like(i.get("INPName"), "%" + kw + "%"),     
+                        cb.like(i.get("INPNum"), "%" + kw + "%"),    
+                        cb.like(i.get("ININame"), "%" + kw + "%"),       
+                        cb.like(i.get("INICode"), "%" + kw + "%"));   
+            }
+        };
     }
 } 

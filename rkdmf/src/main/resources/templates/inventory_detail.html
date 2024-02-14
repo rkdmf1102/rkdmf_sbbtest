@@ -12,7 +12,7 @@
 				<th>규격</th>
 			</tr>	
 		</thead>
-		<tbody>
+		<body>
 			<th>
 				<th:text="@{|/inventory/${inventory.id}|}" th:text="${inventory.INDate}">
 			</th>
@@ -34,7 +34,7 @@
 			<th>
 				<th:text="@{|/inventory/${inventory.id}|}" th:text="${inventory.INStandard}"></a>
 			</th>
-		</tbody>
+		</body>
 	</table>
 	<a th:href="@{|/inventory/modify/${inventory.id}|}" class="btn btn-primary my-2"> 수정</a>
 	<a href="javascript:void(0);" th:data-uri="@{|/inventory/delete/${inventory.id}|}" class="delete btn btn-primary my-2" sec:authorize="isAuthenticated()" th:text="삭제"></a>

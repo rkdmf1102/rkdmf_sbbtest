@@ -29,10 +29,12 @@ public class InventoryController {
 	private final InventoryService inventoryService;
 	
 	@GetMapping("/list")
-	public String list(Model model, @RequestParam(value="page", defaultValue = "0") int page) {
-		Page<Inventory> paging = this.inventoryService.getList(page);
+	public String list(Model model, @RequestParam(value="page", defaultValue = "0") int page, @RequestParam(value = "kw", defaultValue = "") String kw) {
+		Page<Inventory> paging = this.inventoryService.getList(page, kw);
 		model.addAttribute("paging", paging);
+		model.addAttribute("kw", kw);
 		return "inventory_list";
+		
 	}
 	
 //	@GetMapping("/inventory/create")
@@ -83,9 +85,9 @@ public class InventoryController {
 	}
 	
 	@PostMapping("/modify/{id}")
-    public String questionModify(@Valid InventoryForm inf, BindingResult br, @PathVariable("id") Integer id) {
+    public String inventoryModify(@Valid InventoryForm inf, BindingResult br, @PathVariable("id") Integer id) {
         if (br.hasErrors()) {
-            return "question_form";
+            return "inventory_form";
         }
         Inventory inventory = this.inventoryService.getInventory(id); {
        
@@ -96,7 +98,7 @@ public class InventoryController {
 	}
 	
 	@GetMapping("/delete/{id}")
-    public String questionDelete(@PathVariable("id") Integer id) {
+    public String inventoryDelete(@PathVariable("id") Integer id) {
 		Inventory inventory = this.inventoryService.getInventory(id);
       
         this.inventoryService.delete(inventory);
